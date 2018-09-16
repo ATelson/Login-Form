@@ -1,7 +1,6 @@
-package sample;
+package login;
 
 
-import javafx.scene.paint.Color;
 import javafx.event.EventHandler;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -16,12 +15,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 
 
-
-public class Main extends Application {
+public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) {
@@ -35,7 +31,7 @@ public class Main extends Application {
         grid.setPadding(new Insets(25, 25, 25, 25));
 
         Text scenetitle = new Text("Welcome");
-        scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
+
         grid.add(scenetitle, 0, 0, 2, 1);
 
         Label userName = new Label("User Name:");
@@ -61,13 +57,17 @@ public class Main extends Application {
 
             @Override
             public void handle(ActionEvent e) {
-                actiontarget.setFill(Color.FIREBRICK);
+
                 actiontarget.setText("Sign in button pressed");
+                scenetitle.setId("welcome-text");
+                actiontarget.setId("actiontarget");
             }
         });
 
         Scene scene = new Scene(grid, 300, 275);
         primaryStage.setScene(scene);
+        scene.getStylesheets().add
+            (Login.class.getResource("Login.css").toExternalForm());
 
         primaryStage.show();
     }
